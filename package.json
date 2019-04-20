@@ -1,0 +1,28 @@
+{
+  "name": "dragonhack2019-safethedragons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "client": "npm run start --prefix client",
+    "install": "cd client && npm install",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wbudoyo07/Dragonhack2019-SafeTheDragons.git"
+  },
+  "author": "William Budoyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wbudoyo07/Dragonhack2019-SafeTheDragons/issues"
+  },
+  "homepage": "https://github.com/wbudoyo07/Dragonhack2019-SafeTheDragons#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4"
+  }
+}
