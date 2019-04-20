@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app.js"></script> 
+    <title>Autherization</title>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+          <label for="formCrime">Crime</label>
+          <input type="text" class="form-control" id="formCrime"  placeholder="Crime">
+        </div>
+        <div class="form-group">
+          <label for="formDate">Date</label>
+          <input type="text" class="form-control" id="formDate" placeholder="Date">
+        </div>
+        <div class="form-group">
+            <label for="formTime">Time</label>
+            <input type="text" class="form-control" id="formTime" placeholder="Time">
+        </div>
+        <div class="form-group">
+            <label for="formLocation">Location</label>
+            <input type="text" class="form-control" id="formTime" placeholder="Time">
+        </div>
+      </form>
+      <div class="form-group">
+        <label for="formDetails">Details</label>
+        <textarea class="form-control" id="formDetails" rows="3"></textarea>
+      </div>
+      <button type="submit" id="submit-btn" class="btn btn-primary" onclick="submit()">Submit</button>
+      <button id="myBtn">Try it</button>
+
+</body>
+</html>
