@@ -9,7 +9,7 @@ function submit(){
 
   $.ajax({
   type: "POST",
-  url: "http://localhost:3001/input/",
+  url: "https://savethedrags.appspot.com/input/",
   dataType: "json",
   data: {
     firstName: firstName,
@@ -35,7 +35,7 @@ function initMap() {
       document.getElementById('map'), {center: sydney, zoom: 17});
 
   $.ajax({
-    url: "http://localhost:3001/all",
+    url: "https://savethedrags.appspot.com/all",
     async: true,
     dataType: 'json',
     success: function (data) {
