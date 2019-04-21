@@ -2,7 +2,7 @@
        * element that contains the map. */
        #map {
         height: 100%;
-        width:50%;
+        width:100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -80,3 +80,12 @@
       #target {
         width: 345px;
       }
+
+#map {
+    height: 100vh;
+}
+
+.card {
+    width: auto;
+    margin-top: 20px;
+}
