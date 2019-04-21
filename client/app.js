@@ -17,7 +17,9 @@
 // });
 //
 // });
-
+function test(){
+    alert("test213");
+}
 function submit(){
   var crime = document.getElementById('formCrime').value;
   var date = document.getElementById('formDate').value;
