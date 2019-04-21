@@ -66,6 +66,8 @@ app.post('/input', (req, res) => {
   input = req.body;
 
   var crime = db.collection('reports').add({
+    'firstName': input.firstName,
+    'lastName': input.lastName,
     'crime': input.crime,
     'date': input.date,
     'time': input.time,
@@ -80,10 +82,10 @@ app.post('/input', (req, res) => {
 
 });
 
-// app.get('/input', (req, res) => {
-//   console.log(input);
-//   res.send(input);
-// });
+app.get('/input', (req, res) => {
+  console.log(input);
+  res.send(input);
+});
 
 app.listen(PORT, () => {
   console.log(`App is up and running. Listening on port ${PORT}`);

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="authorized.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
@@ -20,9 +20,9 @@
 		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
         <div class="form-group">
 			<div class="row">
-				<div class="col-xs-6"><input type="text" class="form-control" name="first_name" placeholder="First Name" ></div>
-				<div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" ></div>
-			</div>        	
+				<div class="col-xs-6"><input type="text" id="formFirstName" class="form-control" name="first_name" placeholder="First Name" ></div>
+				<div class="col-xs-6"><input type="text" id="formLastName" class="form-control" name="last_name" placeholder="Last Name" ></div>
+			</div>
         </div>
         <div class="form-group">
             <input type="text"
@@ -34,24 +34,21 @@
             class="form-control"placeholder="Date" >
         </div>
 		<div class="form-group">
-            <input type="text" 
+            <input type="text"
             id="formTime"
             class="form-control" placeholder="Time" >
         </div>
         <div class="form-group">
-                <input type="text" 
+                <input type="text"
                 id="formLocation"
                 class="form-control" placeholder="Location" >
-        </div>          
+        </div>
         <div class="form-group">
                 <label for="formDetails">Details</label>
                 <textarea class="form-control" id="formDetails" rows="3"></textarea>
-        </div>
-		<div class="form-group">
-           <a href="/"> <button type="submit" class="btn btn-success btn-lg btn-block" id="submit-btn" onclick="submit()">Submit</button> </a>
         </div>
     </form>
     <a href="/"><button type="submit" id="submit-btn" class="btn btn-primary" onclick="submit()">Submit</button></a>
 </div>
 </body>
-</html>                            
+</html>
