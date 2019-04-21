@@ -5,7 +5,7 @@ function submit(){
   var time = document.getElementById('formTime').value;
   var location = document.getElementById('formLocation').value;
   var details = document.getElementById('formDetails').value;
-  alert(crime);
+
   $.ajax({
   type: "POST",
   url: "http://localhost:3001/input/",
@@ -90,4 +90,3 @@ function submit(){
           map.fitBounds(bounds);
         });
       }
-
