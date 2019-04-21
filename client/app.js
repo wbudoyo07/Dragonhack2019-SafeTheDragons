@@ -1,26 +1,6 @@
-// let records = [];
-//
-// $(document).ready(function(){
-//
-// $.ajax({
-//   url: "http://localhost:3001/all",
-//   async: true,
-//   dataType: 'json',
-//   success: function (data) {
-//     records = data;
-//     // totalRecords = records.length;
-//     // totalPages = Math.ceil(totalRecords / recPerPage);
-//     // apply_pagination();
-//     console.log(data[0].location);
-//     console.log(records);
-//   }
-// });
-//
-// });
-function test(){
-    alert("test213");
-}
 function submit(){
+  var firstName = document.getElementById('formFirstName').value;
+  var lastName = document.getElementById('formLastName').value;
   var crime = document.getElementById('formCrime').value;
   var date = document.getElementById('formDate').value;
   var time = document.getElementById('formTime').value;
@@ -32,6 +12,8 @@ function submit(){
   url: "http://localhost:3001/input/",
   dataType: "json",
   data: {
+    firstName: firstName,
+    lastName: lastName,
     crime: crime,
     date: date,
     time: time,
@@ -82,7 +64,7 @@ function initMap() {
     }
   });
 
-  
+
 }
 
 function createMarker(place) {
@@ -98,7 +80,23 @@ function createMarker(place) {
 }
 
 function displayFieldBoxes(data) {
-    console.log(data);
-    
-}
+  var str = "";
+  // console.log(data[0]);
+    for (var i=0; i<data.length; i++) {
+      var crime = data[i].crime;
+      var location = data[i].location;
+      var details = data[i].details;
+      var number = i+1;
 
+      str +='<div class="card">' +
+            '<div class="card-body"> ' +
+              '<h5 class="card-title">' + number + '. ' + crime + '</h5>' +
+              '<h6 class="card-subtitle mb-2 text-muted">' + location + '</h6>' +
+              '<p class="card-text">' + details + '</p>' +
+              '<a href="#" class="card-link">Card link</a>' +
+              '<a href="#" class="card-link">Another link</a>' +
+              '</div>' +
+              '</div>'
+    }
+    document.getElementById("fieldBoxes").innerHTML=str;
+}
