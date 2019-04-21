@@ -26,12 +26,13 @@
         </div>
         <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  Time Range
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="/student?days=7">7 Days</a>
+                  <a class="dropdown-item" href="/student?days=30">30 Days</a>
+                  <a class="dropdown-item" href="/student?days=90">90 Days</a>
+                  <a class="dropdown-item" href="/student?days=999999">All Time</a>
                 </div>
               </div>
       </nav>
@@ -43,21 +44,11 @@
           </div>
           <div class="col-3">
             <div id="fieldBoxes">
-                <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                </div>
-                    
             </div>
           </div>
         </div>
     </div>
-      
+
 
       <script type="text/javascript" src="app.js" ></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhxb0NmnYOYSjxYM7MNLrzVpzwz2romqk&libraries=places&callback=initMap"

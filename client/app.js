@@ -97,15 +97,16 @@ function displayFieldBoxes(data) {
       var crime = data[i].crime;
       var location = data[i].location;
       var details = data[i].details;
+      var date = data[i].date;
+      var time = data[i].time;
       var number = i+1;
 
       str +='<div class="card">' +
             '<div class="card-body"> ' +
               '<h5 class="card-title">' + number + '. ' + crime + '</h5>' +
               '<h6 class="card-subtitle mb-2 text-muted">' + location + '</h6>' +
+              '<p class="card-text">' + date + ' at ' + time + '</p>' +
               '<p class="card-text">' + details + '</p>' +
-              '<a href="#" class="card-link">Card link</a>' +
-              '<a href="#" class="card-link">Another link</a>' +
               '</div>' +
               '</div>'
     }
