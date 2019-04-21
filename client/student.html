@@ -14,7 +14,8 @@
     <title>Safe The Dragons</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid" style="height:100vh;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 50px;">
         <a class="navbar-brand" href="/"><img src="images/safeTheDrags.png" alt="Dragons"></a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,12 +38,12 @@
               </div>
       </nav>
       <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
-      <div class="container-fluid">
-        <div class="row">
+
+        <div class="row" style="height: calc(100% - 50px);">
           <div class="col-9">
-            <div id="map"></div>
+            <div id="map" style="height: 100%"></div>
           </div>
-          <div class="col-3">
+          <div class="col-3" style="height:100%;overflow-y: scroll;">
             <div id="fieldBoxes">
             </div>
           </div>
