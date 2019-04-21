@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
   res.status(200).sendFile(__dirname + '/client/index.html');
 });
 
+app.get('/student', (req, res) => {
+    res.status(200).sendFile(__dirname + '/client/student.html');
+  });
 app.get('/authorized', (req,res) => {
   res.status(200).sendFile(__dirname + '/client/authorized.html');
 });
