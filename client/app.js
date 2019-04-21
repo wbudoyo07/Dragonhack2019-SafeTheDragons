@@ -33,14 +33,12 @@ function initMap() {
 
   map = new google.maps.Map(
       document.getElementById('map'), {center: sydney, zoom: 17});
-  var list = [];
-  var records;
+
   $.ajax({
     url: "http://localhost:3001/all",
     async: true,
     dataType: 'json',
     success: function (data) {
-      records = data;
 
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i].location);
@@ -68,9 +66,22 @@ function initMap() {
 }
 
 function createMarker(place) {
+  center = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
+
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
+  });
+
+  var cityCircle = new google.maps.Circle({
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    map: map,
+    center: center,
+    radius: 100
   });
 
   google.maps.event.addListener(marker, 'click', function() {
