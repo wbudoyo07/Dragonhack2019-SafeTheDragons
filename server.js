@@ -8,7 +8,7 @@ const Firestore = require('@google-cloud/firestore');
 
 const db = new Firestore({
   projectID: 'savethedrags',
-  keyFilename: 'savethedrags-76496b4cd7c0.json',
+  keyFilename: './config/savethedrags-76496b4cd7c0.json',
 });
 
 let input="";
