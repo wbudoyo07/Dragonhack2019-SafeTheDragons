@@ -8,7 +8,7 @@ const Firestore = require('@google-cloud/firestore');
 
 const db = new Firestore({
   projectID: 'savethedrags',
-  keyFilename: '/Users/yansentjandra/Important/savethedrags-76496b4cd7c0.json',
+  keyFilename: 'savethedrags-76496b4cd7c0.json',
 });
 
 let input="";
@@ -46,9 +46,9 @@ app.get('/authorized', (req,res) => {
 //   });
 // });
 
-let arr = [];
 
 app.get('/all', (req,res) => {
+  let arr = [];
   db.collection('reports').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
@@ -65,24 +65,19 @@ app.get('/all', (req,res) => {
 app.post('/input', (req, res) => {
   input = req.body;
 
-  var crime = db.collection('reports').doc('case1');
-
-  var setCrime = crime.set({
+  var crime = db.collection('reports').add({
     'crime': input.crime,
     'date': input.date,
     'time': input.time,
     'location': input.location,
     'details': input.details,
+  }).then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
   });
 
-  var crime2 = db.collection('reports').doc('case2');
-  var setCrime2 = crime2.set({
-    'crime': 'input.crime',
-    'date': 'input.date',
-    'time': 'input.time',
-    'location': 'input.location',
-    'details': 'input.details',
-  });
 });
 
 // app.get('/input', (req, res) => {
