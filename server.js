@@ -12,17 +12,25 @@ const db = new Firestore({
 });
 
 let input="";
+let days;
 
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.get('/', (req, res) => {
+  days = req.query.days;
+  console.log(days);
   res.status(200).sendFile(__dirname + '/client/index.html');
 });
 
 app.get('/authorized', (req,res) => {
   res.status(200).sendFile(__dirname + '/client/authorized.html');
+});
+
+app.get('/show', (req, res) => {
+  days = req.query.days;
+  res.send(days);
 });
 
 // app.get('/store', (req, res) => {
@@ -48,12 +56,24 @@ app.get('/authorized', (req,res) => {
 
 
 app.get('/all', (req,res) => {
+  // if(days == undefined) {
+    days = 999999;
+  // }else {
+  //   days = req.query.days;
+  // }
+  console.log(days);
   let arr = [];
   db.collection('reports').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
-      console.log(doc.data());
-      arr.push(doc.data());
+      d = new Date(doc.data().date);
+      today = new Date();
+      const diffTime = Math.abs(today.getTime() - d.getTime());
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      // console.log(diffDays);
+      if(diffDays < days){
+        arr.push(doc.data());
+      }
     });
     res.send(arr);
   })
