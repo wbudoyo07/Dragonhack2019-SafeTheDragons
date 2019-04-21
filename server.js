@@ -1,6 +1,8 @@
 // server.js
 const express = require('express');
 const app = express();
+const path = require('path');
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3001;
 const Firestore = require('@google-cloud/firestore');
 
@@ -9,54 +11,84 @@ const db = new Firestore({
   keyFilename: '/Users/yansentjandra/Important/savethedrags-76496b4cd7c0.json',
 });
 
+let input="";
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(express.static(path.join(__dirname, 'client')));
+
 app.get('/', (req, res) => {
-  // res.status(200).sendFile(__dirname + '/client/public/index.html');
-  res.end();
-  var docRef = db.collection('users').doc('alovelace');
-
-  var setAda = docRef.set({
-    first: 'Ada',
-    last: 'Lovelace',
-    born: 1815
-  });
-
-  var aTuringRef = db.collection('users').doc('aturing');
-
-  var setAlan = aTuringRef.set({
-    'first': 'Alan',
-    'middle': 'Mathison',
-    'last': 'Turing',
-    'born': 1912
-  });
+  res.status(200).sendFile(__dirname + '/client/index.html');
 });
 
 app.get('/authorized', (req,res) => {
-  res.status(200).sendFile(__dirname + '/client/public/index.html');
+  res.status(200).sendFile(__dirname + '/client/authorized.html');
 });
 
-app.get('/result', (req, res) => {
-  db.collection('users').get()
+// app.get('/store', (req, res) => {
+//   var crime = db.collection('reports').doc('case1');
+//
+//   var setCrime = crime.set({
+//     'crime': input.crime,
+//     'date': input.date,
+//     'time': input.time,
+//     'location': input.location,
+//     'details': input.details,
+//   });
+//
+//   var crime2 = db.collection('reports').doc('case2');
+//   var setCrime2 = crime2.set({
+//     'crime': 'input.crime',
+//     'date': 'input.date',
+//     'time': 'input.time',
+//     'location': 'input.location',
+//     'details': 'input.details',
+//   });
+// });
+
+let arr = [];
+
+app.get('/all', (req,res) => {
+  db.collection('reports').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
-      console.log(doc.id, '=>', doc.data().first);
+      console.log(doc.data());
+      arr.push(doc.data());
     });
+    res.send(arr);
   })
   .catch((err) => {
     console.log('Error getting documents', err);
   });
 });
 
-app.get('/input', (req, res) => {
-  name = "Victim"
-  var aTuringRef = db.collection('reports').doc('aturing');
+app.post('/input', (req, res) => {
+  input = req.body;
 
-  var setAlan = aTuringRef.set({
-    'first': 'Alan',
-    'middle': 'Mathison',
-    'last': 'Turing',
-    'born': 1912
+  var crime = db.collection('reports').doc('case1');
+
+  var setCrime = crime.set({
+    'crime': input.crime,
+    'date': input.date,
+    'time': input.time,
+    'location': input.location,
+    'details': input.details,
+  });
+
+  var crime2 = db.collection('reports').doc('case2');
+  var setCrime2 = crime2.set({
+    'crime': 'input.crime',
+    'date': 'input.date',
+    'time': 'input.time',
+    'location': 'input.location',
+    'details': 'input.details',
   });
 });
+
+// app.get('/input', (req, res) => {
+//   console.log(input);
+//   res.send(input);
+// });
 
 app.listen(PORT, () => {
   console.log(`App is up and running. Listening on port ${PORT}`);
