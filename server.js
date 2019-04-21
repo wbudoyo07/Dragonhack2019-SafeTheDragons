@@ -19,52 +19,27 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.get('/', (req, res) => {
-  days = req.query.days;
-  console.log(days);
   res.status(200).sendFile(__dirname + '/client/index.html');
 });
 
 app.get('/student', (req, res) => {
-    res.status(200).sendFile(__dirname + '/client/student.html');
-  });
+  days = req.query.days;
+
+  if(days != undefined) {
+    console.log(days);
+  } else {
+    days = 999999;
+  }
+
+  console.log(days);
+  res.status(200).sendFile(__dirname + '/client/student.html');
+});
+
 app.get('/authorized', (req,res) => {
   res.status(200).sendFile(__dirname + '/client/authorized.html');
 });
 
-app.get('/show', (req, res) => {
-  days = req.query.days;
-  res.send(days);
-});
-
-// app.get('/store', (req, res) => {
-//   var crime = db.collection('reports').doc('case1');
-//
-//   var setCrime = crime.set({
-//     'crime': input.crime,
-//     'date': input.date,
-//     'time': input.time,
-//     'location': input.location,
-//     'details': input.details,
-//   });
-//
-//   var crime2 = db.collection('reports').doc('case2');
-//   var setCrime2 = crime2.set({
-//     'crime': 'input.crime',
-//     'date': 'input.date',
-//     'time': 'input.time',
-//     'location': 'input.location',
-//     'details': 'input.details',
-//   });
-// });
-
-
 app.get('/all', (req,res) => {
-  // if(days == undefined) {
-    days = 999999;
-  // }else {
-  //   days = req.query.days;
-  // }
-  console.log(days);
   let arr = [];
   db.collection('reports').get()
   .then((snapshot) => {
@@ -73,7 +48,6 @@ app.get('/all', (req,res) => {
       today = new Date();
       const diffTime = Math.abs(today.getTime() - d.getTime());
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      // console.log(diffDays);
       if(diffDays < days){
         arr.push(doc.data());
       }
